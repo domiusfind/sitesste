@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>📁 Domius Arquivos</title>
+  <title> DOMIUS EXEC </title>
   <style>
     /* Fundo com imagem borrada */
     body::before {
@@ -27,16 +27,19 @@
       font-family: Arial, sans-serif;
       color: #fff;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       padding: 20px;
-      overflow: hidden;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
 
     .content {
       max-width: 800px;
       width: 100%;
+      flex: 1;
     }
 
     h1 {
@@ -49,6 +52,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      margin-bottom: 40px;
     }
 
     .file {
@@ -83,13 +87,38 @@
     .add-instructions {
       font-size: 0.9em;
       color: #aaa;
+      margin-bottom: 40px;
     }
 
-    /* Player invisível */
-    #ytplayer {
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
+    footer {
+      border-top: 1px solid #444;
+      padding-top: 15px;
+      width: 100%;
+      max-width: 800px;
+      color: #888;
+      font-size: 0.9em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .social-icons a img {
+      width: 30px;
+      height: 30px;
+      filter: brightness(1) invert(1);
+      transition: filter 0.3s;
+    }
+
+    .social-icons a:hover img {
+      filter: brightness(0.7) invert(0.7);
+      cursor: pointer;
     }
   </style>
 </head>
@@ -99,67 +128,33 @@
 
     <div class="file-list">
       <div class="file">
-        <a href="files/delta.lua" download>🚀 DELTA</a>
+        <a href="files/delta.lua" download> DELTA</a>
         <small>Exploit/script compatível com executores modernos</small>
       </div>
 
       <div class="file">
-        <a href="files/arceus.lua" download>✨ ARCEUS</a>
+        <a href="files/arceus.lua" download> ARCEUS</a>
         <small>Versão mais recente do Arceus X (v3)</small>
       </div>
 
       <div class="file">
-        <a href="files/fluxus.lua" download>⚡ FLUXUS</a>
+        <a href="files/fluxus.lua" download> FLUXUS</a>
         <small>Script feito para uso no executor Fluxus</small>
       </div>
 
       <div class="file">
-        <a href="files/cryptic.lua" download>🧿 CRYPTIC</a>
+        <a href="files/cryptic.lua" download> CRYPTIC</a>
         <small>Script compatível com Cryptic Hub</small>
       </div>
 
       <div class="file">
-        <a href="files/utilitarios.zip" download>🧰 UTILITÁRIOS</a>
+        <a href="files/utilitarios.zip" download> UTILITÁRIOS</a>
         <small>Ferramentas úteis: Bypass, Unpatch, FPS Unlocker, etc.</small>
       </div>
     </div>
 
     <hr>
 
-    <p class="add-instructions">
-      🔧 Para adicionar mais arquivos, edite este código HTML e insira mais blocos igual aos acima na área marcada. <br>
-      Os arquivos devem estar na pasta <code>/files</code> do seu site.
+    <p class="add-instructions"> © Domius - Todos os direitos reservados <code>/</code>
     </p>
   </div>
-
-  <!-- YouTube player invisível -->
-  <div id="ytplayer"></div>
-  <script>
-    // Carrega a API do YouTube
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.body.appendChild(tag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('ytplayer', {
-        videoId: '4yK4D9uK60I',
-        playerVars: {
-          autoplay: 1,
-          controls: 0,
-          showinfo: 0,
-          modestbranding: 1,
-          loop: 1,
-          playlist: '4yK4D9uK60I',
-          mute: 1
-        },
-        events: {
-          onReady: function (e) {
-            e.target.playVideo();
-          }
-        }
-      });
-    }
-  </script>
-</body>
-</html>
