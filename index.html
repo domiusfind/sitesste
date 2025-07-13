@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>📁 Domius Arquivos</title>
+  <style>
+    /* Fundo com imagem borrada */
+    body::before {
+      content: "";
+      background: url('https://cdn.discordapp.com/attachments/1291075417683267715/1394055689810214922/cf2652d8679756511b75efa9283096fe.jpg?ex=68756b08&is=68741988&hm=728605e2ff822d523716b4075d802eeb81b98ae0251932e1da3c70431045662e') no-repeat center center fixed;
+      background-size: cover;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      filter: blur(10px) brightness(0.5);
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .content {
+      max-width: 800px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 30px;
+      color: #4fc3f7;
+    }
+
+    .file-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .file {
+      background: rgba(26, 26, 26, 0.85);
+      padding: 15px 20px;
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+
+    .file:hover {
+      background: rgba(42, 42, 42, 0.85);
+    }
+
+    .file a {
+      color: #4fc3f7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .file small {
+      display: block;
+      color: #aaa;
+      margin-top: 4px;
+    }
+
+    hr {
+      margin: 40px 0;
+      border: 0;
+      border-top: 1px solid #444;
+    }
+
+    .add-instructions {
+      font-size: 0.9em;
+      color: #aaa;
+    }
+
+    /* Player invisível */
+    #ytplayer {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>📁 Domius - Arquivos Públicos</h1>
+
+    <div class="file-list">
+      <div class="file">
+        <a href="files/delta.lua" download>🚀 DELTA</a>
+        <small>Exploit/script compatível com executores modernos</small>
+      </div>
+
+      <div class="file">
+        <a href="files/arceus.lua" download>✨ ARCEUS</a>
+        <small>Versão mais recente do Arceus X (v3)</small>
+      </div>
+
+      <div class="file">
+        <a href="files/fluxus.lua" download>⚡ FLUXUS</a>
+        <small>Script feito para uso no executor Fluxus</small>
+      </div>
+
+      <div class="file">
+        <a href="files/cryptic.lua" download>🧿 CRYPTIC</a>
+        <small>Script compatível com Cryptic Hub</small>
+      </div>
+
+      <div class="file">
+        <a href="files/utilitarios.zip" download>🧰 UTILITÁRIOS</a>
+        <small>Ferramentas úteis: Bypass, Unpatch, FPS Unlocker, etc.</small>
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="add-instructions">
+      🔧 Para adicionar mais arquivos, edite este código HTML e insira mais blocos igual aos acima na área marcada. <br>
+      Os arquivos devem estar na pasta <code>/files</code> do seu site.
+    </p>
+  </div>
+
+  <!-- YouTube player invisível -->
+  <div id="ytplayer"></div>
+  <script>
+    // Carrega a API do YouTube
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('ytplayer', {
+        videoId: '4yK4D9uK60I',
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          showinfo: 0,
+          modestbranding: 1,
+          loop: 1,
+          playlist: '4yK4D9uK60I',
+          mute: 1
+        },
+        events: {
+          onReady: function (e) {
+            e.target.playVideo();
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
