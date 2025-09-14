@@ -920,23 +920,7 @@ spawn(function()
     end
   end
 end)
-                repeat wait() Attack.Kill(v,_G.AutoZou) until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoZou == false
-              else
-                _tp(CFrame.new(2099.88159, 448.931, 648.997375))
-              end
-            elseif replicated.Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 2 then
-              repeat wait() _tp(CFrame.new(-1836, 11, 1714)) until not _G.AutoZou or (Root.Position == CFrame.new(-1836, 11, 1714).Position)
-              if (Root.CFrame == CFrame.new(-1836, 11, 1714)) then notween(CFrame.new(-1836, 11, 1714))end
-              notween(CFrame.new(-1850.49329, 13.1789551, 1750.89685))
-              wait(.1)
-              notween(CFrame.new(-1858.87305, 19.3777466, 1712.01807))
-              wait(.1)
-              notween(CFrame.new(-1803.94324, 16.5789185, 1750.89685))
-              wait(.1)
-              notween(CFrame.new(-1858.55835, 16.8604317, 1724.79541))
-              wait(.1)
-              notween(CFrame.new(-1869.54224, 15.987854, 1681.00659))
-              wait(.1)local TravelDress = Tabs.Main:AddToggle("TravelDress", {Title = "Auto Travel Dressrosa", Description = "", Default = false})
+local TravelDress = Tabs.Main:AddToggle("TravelDress", {Title = "Auto Travel Dressrosa", Description = "", Default = false})
 TravelDress:OnChanged(function(Value)
   _G.TravelDres = Value
 end)
@@ -1046,7 +1030,23 @@ spawn(function()
             elseif replicated.Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 1 then
               local v = GetConnectionEnemies("Jeremy")
               if v then
-
+                repeat wait() Attack.Kill(v,_G.AutoZou) until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoZou == false
+              else
+                _tp(CFrame.new(2099.88159, 448.931, 648.997375))
+              end
+            elseif replicated.Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 2 then
+              repeat wait() _tp(CFrame.new(-1836, 11, 1714)) until not _G.AutoZou or (Root.Position == CFrame.new(-1836, 11, 1714).Position)
+              if (Root.CFrame == CFrame.new(-1836, 11, 1714)) then notween(CFrame.new(-1836, 11, 1714))end
+              notween(CFrame.new(-1850.49329, 13.1789551, 1750.89685))
+              wait(.1)
+              notween(CFrame.new(-1858.87305, 19.3777466, 1712.01807))
+              wait(.1)
+              notween(CFrame.new(-1803.94324, 16.5789185, 1750.89685))
+              wait(.1)
+              notween(CFrame.new(-1858.55835, 16.8604317, 1724.79541))
+              wait(.1)
+              notween(CFrame.new(-1869.54224, 15.987854, 1681.00659))
+              wait(.1)
               notween(CFrame.new(-1800.0979, 16.4978027, 1684.52368))
               wait(.1)
               notween(CFrame.new(-1819.26343, 14.795166, 1717.90625))
