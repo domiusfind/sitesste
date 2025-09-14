@@ -621,17 +621,18 @@ local Window = Fluent:CreateWindow({Title = "Domius - Blox Fruits",SubTitle = "b
 local Tabs = {
   Main = Window:AddTab({Title = "Farming", Icon = "home"}),
   Shop = Window:AddTab({Title = "Shop", Icon = "shopping-cart"}),
+  status = Window:AddTab({Title = "Status", Icon = "chart-column-decreasing"}),
   Quests = Window:AddTab({Title = "Get Item", Icon = "scale"}),
   Settings = Window:AddTab({Title = "Settings", Icon = "settings"}),
-  Melee = Window:AddTab({Title = "Fighting Style", Icon = "activity"}),
-  SeaEvent = Window:AddTab({Title = "Sea Events", Icon = "anchor"}),
-  Mirage = Window:AddTab({Title = "Mirage", Icon = "skull"}),
-  Drago = Window:AddTab({Title = "Drago Dojo", Icon = "bookmark"}),
-  Prehistoric = Window:AddTab({Title = "Prehistoric", Icon = "battery"}),
-  Raids = Window:AddTab({Title = "Raid", Icon = "arrow-down-right"}),
-  Combat = Window:AddTab({Title = "Combat PVP", Icon = "swords"}),
+  Melee = Window:AddTab({Title = "Style", Icon = "activity"}),
   Travel = Window:AddTab({Title = "Teleport", Icon = "alarm-smoke"}),
-  Fruit = Window:AddTab({Title = "Fruits", Icon = "cherry"}),
+  Mirage = Window:AddTab({Title = "Mirage", Icon = "skull"}),
+  Drago = Window:AddTab({Title = "Dragon Trainer", Icon = "bookmark"}),
+  Prehistoric = Window:AddTab({Title = "vulcanic", Icon = "battery"}),
+  Fruit = Window:AddTab({Title = "Fruit", Icon = "cherry"}),
+  Raids = Window:AddTab({Title = "Raid", Icon = "arrow-down-right"}),
+  SeaEvent = Window:AddTab({Title = "Sea Events", Icon = "anchor"}),
+  Combat = Window:AddTab({Title = "Local Player", Icon = "swords"}),
   Misc = Window:AddTab({Title = "Misc", Icon = "album"})
 }
 if game.CoreGui:FindFirstChild('UIBUTTON') then
@@ -3604,14 +3605,14 @@ spawn(function()
 end)
 
 Tabs.Mirage:AddSection("Mystic Island / Full Moon")
-FullMOOn = Tabs.Mirage:AddParagraph({Title = " FullMoon Status ",Content = ""})
-Ismirage = Tabs.Mirage:AddParagraph({Title = " Mirage Island Status ",Content = ""})
+FullMOOn = Tabs.status:AddParagraph({Title = " FullMoon Status ",Content = ""})
+Ismirage = Tabs.status:AddParagraph({Title = " Mirage Island ",Content = ""})
 spawn(function()
   while wait(.2) do
     if workspace.Map:FindFirstChild("MysticIsland") or workspace._WorldOrigin.Locations:FindFirstChild("Mirage Island") then
-      Ismirage:SetDesc(" Mirage Island : True")
+      Ismirage:SetDesc(" Mirage Island : ✅")
     else
-      Ismirage:SetDesc(" Mirage Island : False")
+      Ismirage:SetDesc(" Mirage Island : ❌")
     end
   end
 end)
@@ -4616,13 +4617,13 @@ spawn(function()
   end
 end)
 Tabs.Prehistoric:AddSection("Prehistoric Island")
-local Check_Volcano = Tabs.Prehistoric:AddParagraph({Title = " Prehistoric Island Status ",Content = ""})
+local Check_Volcano = Tabs.status:AddParagraph({Title = " Prehistoric Island",Content = ""})
 spawn(function()
   while wait(.2) do
     if workspace.Map:FindFirstChild("PrehistoricIsland") or workspace._WorldOrigin.Locations:FindFirstChild("Prehistoric Island") then
-      Check_Volcano:SetDesc(" Prehistoric Island : True")
+      Check_Volcano:SetDesc(" Prehistoric Island : ✅")
     else
-      Check_Volcano:SetDesc(" Prehistoric Island : False")
+      Check_Volcano:SetDesc(" Prehistoric Island : ❌")
     end
   end
 end)
@@ -4788,7 +4789,7 @@ end)
 Tabs.SeaEvent:AddSection("Sea Event / Setting Sail")
 local ListSeaBoat={"Guardian","PirateGrandBrigade","MarineGrandBrigade","PirateBrigade","MarineBrigade","PirateSloop","MarineSloop","Beast Hunter"}
 local ListSeaZone={"Lv 1","Lv 2","Lv 3","Lv 4","Lv 5","Lv 6","Lv Infinite"}
-local SPYING = Tabs.SeaEvent:AddParagraph({Title = " Spy Status ",Content = ""})
+local SPYING = Tabs.status:AddParagraph({Title = " Spy Status ",Content = ""})
 spawn(function()
   while wait(.2) do
     pcall(function()
@@ -4805,14 +4806,14 @@ Tabs.SeaEvent:AddButton({Title = "Buy Fracments with Spy", Description = "Buy th
 Callback = function()
   replicated:WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer("InfoLeviathan","2")
 end})
-local FloD = Tabs.SeaEvent:AddParagraph({Title = " FlozenDimension Status ",Content = ""})
+local FloD = Tabs.status:AddParagraph({Title = " FlozenDimension Status ",Content = ""})
 spawn(function()
   pcall(function()
     while wait(.2) do
       if workspace._WorldOrigin.Locations:FindFirstChild('Frozen Dimension') then
-        FloD:SetDesc(' Flozen Dimension : True')
+        FloD:SetDesc(' Flozen Dimension : ✅')
       else
-        FloD:SetDesc(' Flozen Dimension : False')
+        FloD:SetDesc(' Flozen Dimension : ❌')
       end
     end
   end)
@@ -4967,13 +4968,13 @@ spawn(function()
 end)
 
 Tabs.SeaEvent:AddSection("Kitsune Island / Event")
-local Check_Kitsu = Tabs.SeaEvent:AddParagraph({Title = " Kitsune Island Status ",Content = ""})
+local Check_Kitsu = Tabs.status:AddParagraph({Title = " Kitsune Island Status ",Content = ""})
 spawn(function()
   while wait(.2) do
     if workspace.Map:FindFirstChild("KitsuneIsland") or workspace._WorldOrigin.Locations:FindFirstChild("Kitsune Island") then
-      Check_Kitsu:SetDesc(" Kitsune Island : True")
+      Check_Kitsu:SetDesc(" Kitsune Island : ✅")
     else
-      Check_Kitsu:SetDesc(" Kitsune Island : False")
+      Check_Kitsu:SetDesc(" Kitsune Island : ❌")
     end
   end
 end)
