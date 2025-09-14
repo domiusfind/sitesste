@@ -686,7 +686,9 @@ else
   Fluent:Notify({Title = "Free Script",Content = "Nice",SubContent = "Chúc bạn chơi game vv!",Duration = 15})
 end
 
-local FarmLevel = Tabs.Main:AddToggle("FarmLevel", {Title = "Auto Farm Level", Description = "", Default = false})
+Tabs.Main:AddSection("Main")
+
+local FarmLevel = Tabs.Main:AddToggle("FarmLevel", {Title = "Farm Level", Description = "", Default = false})
 FarmLevel:OnChanged(function(Value)
   _G.Level = Value
 end)
