@@ -718,6 +718,34 @@ spawn(function()
 	end
   end
 end)
+local Q = Tabs.Main:AddToggle("Q", {Title = "Auto Elite Hunter", Description = "", Default = false})
+Q:OnChanged(function(Value)
+  _G.FarmEliteHunt = Value
+end)
+spawn(function()
+  while wait(Sec) do
+    pcall(function()
+	  if _G.FarmEliteHunt then
+	    if plr.PlayerGui.Main.Quest.Visible == true then
+	      if string.find(plr.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Diablo") or string.find(plr.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Urban") or string.find(plr.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Deandre") then
+		    for i,v in pairs(replicated:GetChildren()) do
+		      if string.find(v.Name,"Diablo") or string.find(v.Name,"Urban") or string.find(v.Name,"Deandre") then
+		        _tp(v.HumanoidRootPart.CFrame)				
+		      end	
+		    end
+	 	    for i,v in pairs(Enemies:GetChildren()) do
+		      if (string.find(v.Name,"Diablo") or string.find(v.Name,"Urban") or string.find(v.Name,"Deandre")) and Attack.Alive(v) then
+	            repeat wait() Attack.Kill(v, _G.FarmEliteHunt) until not _G.FarmEliteHunt or plr.PlayerGui.Main.Quest.Visible == false or not v.Parent or v.Humanoid.Health <=0
+	          end
+	        end           
+	      end        
+	    else
+	      replicated.Remotes.CommF_:InvokeServer("EliteHunter")
+	    end
+      end
+    end)
+  end
+end)
 local TravelDress = Tabs.Main:AddToggle("TravelDress", {Title = "Auto Travel Dressrosa", Description = "", Default = false})
 TravelDress:OnChanged(function(Value)
   _G.TravelDres = Value
@@ -2591,39 +2619,11 @@ spawn(function()
 end)
 
 Tabs.Quests:AddSection("Tushita + Yama")
-local Process = Tabs.Quests:AddParagraph({Title = "Elites Process ",Content = ""})
+local Process = Tabs.status:AddParagraph({Title = "Elites Process ",Content = ""})
 spawn(function()
   while wait(Sec) do
     pcall(function()    
       Process:SetDesc("Elite Procress :  " ..replicated.Remotes.CommF_:InvokeServer("EliteHunter","Progress"))
-    end)
-  end
-end)
-local Q = Tabs.Quests:AddToggle("Q", {Title = "Auto Elite Quest", Description = "", Default = false})
-Q:OnChanged(function(Value)
-  _G.FarmEliteHunt = Value
-end)
-spawn(function()
-  while wait(Sec) do
-    pcall(function()
-	  if _G.FarmEliteHunt then
-	    if plr.PlayerGui.Main.Quest.Visible == true then
-	      if string.find(plr.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Diablo") or string.find(plr.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Urban") or string.find(plr.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Deandre") then
-		    for i,v in pairs(replicated:GetChildren()) do
-		      if string.find(v.Name,"Diablo") or string.find(v.Name,"Urban") or string.find(v.Name,"Deandre") then
-		        _tp(v.HumanoidRootPart.CFrame)				
-		      end	
-		    end
-	 	    for i,v in pairs(Enemies:GetChildren()) do
-		      if (string.find(v.Name,"Diablo") or string.find(v.Name,"Urban") or string.find(v.Name,"Deandre")) and Attack.Alive(v) then
-	            repeat wait() Attack.Kill(v, _G.FarmEliteHunt) until not _G.FarmEliteHunt or plr.PlayerGui.Main.Quest.Visible == false or not v.Parent or v.Humanoid.Health <=0
-	          end
-	        end           
-	      end        
-	    else
-	      replicated.Remotes.CommF_:InvokeServer("EliteHunter")
-	    end
-      end
     end)
   end
 end)
@@ -6229,22 +6229,7 @@ spawn(function()
     end
   end
 end)
-TwF = Tabs.Fruit:AddToggle("TwF", {Title = "Auto Tween to Fruit", Description = "Automatic tween to get devil fruit", Default = false})
-TwF:OnChanged(function(Value)
-  _G.TwFruits = Value
-end)
-spawn(function()
-  while wait(Sec) do
-    if _G.TwFruits then
-      pcall(function()
-        for _,x1 in pairs(workspace:GetChildren()) do
-	    if string.find(x1.Name, "Fruit") then _tp(x1.Handle.CFrame) end
-	    end
-      end)
-    end
-  end
-end)
-BringF = Tabs.Fruit:AddToggle("BringF", {Title = "Auto Collect Fruit", Description = "Automatic bring devil fruit", Default = false})
+BringF = Tabs.Fruit:AddToggle("BringF", {Title = "Auto Collect Fruit", Description = "", Default = false})
 BringF:OnChanged(function(Value)
   _G.InstanceF = Value
 end)
